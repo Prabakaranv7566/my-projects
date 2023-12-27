@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Your Blogger Blog</title>
+    <!-- Other head elements -->
+
+    <!-- Add the following code for the text-to-speech functionality -->
+    <script>
+        // Function to initiate text-to-speech
+        function speakText() {
+            const textToSpeak = document.getElementById("text-to-speak").value;
+            const speechSynthesis = window.speechSynthesis;
+            const speechUtterance = new SpeechSynthesisUtterance(textToSpeak);
+            speechSynthesis.speak(speechUtterance);
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Rest of your Blogger template code -->
+
+    <!-- Add a text input and button to trigger text-to-speech -->
+    <input type="text" id="text-to-speak" placeholder="Enter text to speak">
+    <button onclick="speakText()">Speak</button>
+</body>
+
+</html>

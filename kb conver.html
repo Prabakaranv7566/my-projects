@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>KB to MB, GB, TB Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container1 {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 94%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container1">
+        <h1>KB to MB, GB, TB Converter</h1>
+        <label for="inputValue1">Enter a value in KB:</label>
+        <input type="number" id="inputValue1" placeholder="Enter a value in KB">
+        <label for="unit2">Select unit to convert to:</label>
+        <select id="unit1">
+            <option value="MB GB TB">Megabytes (MB)</option>
+
+        </select>
+        <button onclick="convert1()">Convert</button> <button onclick="clearLabels()">Clear Labels</button>
+        <p id="result1"></p>
+        <p id="result2"></p>
+        <p id="result3"></p>
+
+
+    </div>
+
+    <script>
+        function convert1() {
+            const inputValue1 = parseFloat(document.getElementById("inputValue1").value);
+            const unit3 = document.getElementById("unit1").value;
+            const resultElement = document.getElementById("result1");
+            const resultElement1 = document.getElementById("result2");
+            const resultElement2 = document.getElementById("result3");
+            let result1;
+
+            if (unit3 === "MB GB TB") {
+                result1 = inputValue1 / 1024 + " MB";
+                result2 = inputValue1 / 1048576 + " GB";
+                result3 = inputValue1 / 1073741824 + " TB";
+
+            }
+
+            resultElement.innerHTML = `Result: ${result1}`;
+            resultElement1.innerHTML = `Result: ${result2}`;
+            resultElement2.innerHTML = `Result: ${result3}`;
+        }
+        function clearLabels() {
+            document.getElementById("result1").textContent = "";
+            document.getElementById("result2").textContent = "";
+            document.getElementById("result3").textContent = "";
+        }
+    </script>
+</body>
+
+</html>

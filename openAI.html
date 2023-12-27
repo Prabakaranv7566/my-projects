@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ChatGPT Integration</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <h2>Chat with ChatGPT</h2>
+
+    <div id="chat-container" style="height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px;"></div>
+
+    <input type="text" id="user-input">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        const apiEndpoint = 'https://api.openai.com/v1/engines/davinci/completions'; // Replace with your OpenAI API endpoint
+
+
+
+        const apiKey = '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'; // Replace with your OpenAI API key
+        //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  this is the 
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+            if (userInput) {
+                displayMessage('user', userInput);
+
+                // Make a request to the OpenAI API
+                fetch(apiEndpoint + '/v1/engines/davinci/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        prompt: userInput,
+                        max_tokens: 150
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        const botResponse = data.choices[0].text.trim();
+                        displayMessage('bot', botResponse);
+                    })
+                    .catch(error => console.error('Error:', error));
+
+                document.getElementById('user-input').value = '';
+            }
+        }
+
+        function displayMessage(sender, message) {
+            const chatContainer = document.getElementById('chat-container');
+            const messageElement = document.createElement('div');
+            messageElement.textContent = `${sender}: ${message}`;
+            chatContainer.appendChild(messageElement);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+    </script>
+
+</body>
+
+</html>

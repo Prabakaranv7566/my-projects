@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Generate WhatsApp Link</title>
+</head>
+
+<style>
+    button {
+        padding: 3px 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .toggleButton:hover {
+        background-color: #29b93f !important;
+    }
+
+    #greeting {
+  height: 100px; /* Adjust this height as needed */
+  resize: vertical; /* Allow vertical resizing if needed */
+  padding: 8px; /* Optional: Add padding for better appearance */
+}
+</style>
+
+
+<body>
+
+    <h2>WhatsApp Link Generator</h2>
+
+    <label for="whatsappNumber">WhatsApp Number:</label>
+    <input type="text" id="whatsappNumber" placeholder="Enter your WhatsApp number"><br><br>
+
+    <label for="greeting">Greeting Message:</label>
+    
+    <textarea type="text" id="greeting" placeholder="Enter your greeting message" contenteditable="true"></textarea><br><br>
+    <button onclick="generateLink()">Generate WhatsApp Link</button><br><br>
+
+    <p id="whatsappLink"></p>
+
+    <script>
+        function generateLink() {
+            var number = document.getElementById('whatsappNumber').value;
+            var message = document.getElementById('greeting').value;
+
+            if (number && message) {
+                // Generating WhatsApp link
+                var link = "https://wa.me/" + number + "?text=" + encodeURIComponent(message);
+
+                // Displaying the generated link
+                document.getElementById('whatsappLink').innerHTML = '<a href="' + link + '" target="_blank">' + link + '</a>';
+            } else {
+                alert("Please enter both your WhatsApp number and a greeting message.");
+            }
+        }
+    </script>
+
+</body>
+
+</html>

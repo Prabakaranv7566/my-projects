@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Simple 3D Cube</title>
+    <style>
+        #cube-container {
+            perspective: 800px;
+            perspective-origin: 50% 50%;
+        }
+
+        #cube {
+            width: 100px;
+            height: 100px;
+            transform-style: preserve-3d;
+            animation: rotate 5s infinite linear;
+        }
+
+        .face {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #fff;
+        }
+
+        .front {
+            transform: rotateY(0deg) translateZ(50px);
+        }
+
+        .back {
+            transform: rotateY(180deg) translateZ(50px);
+        }
+
+        .left {
+            transform: rotateY(-90deg) translateZ(50px);
+        }
+
+        .right {
+            transform: rotateY(90deg) translateZ(50px);
+        }
+
+        .top {
+            transform: rotateX(90deg) translateZ(50px);
+        }
+
+        .bottom {
+            transform: rotateX(-90deg) translateZ(50px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cube-container">
+        <div id="cube">
+            <div class="face front">Front</div>
+            <div class="face back">Back</div>
+            <div class="face left">Left</div>
+            <div class="face right">Right</div>
+            <div class="face top">Top</div>
+            <div class="face bottom">Bottom</div>
+        </div>
+    </div>
+
+    <script>
+        const cube = document.getElementById("cube");
+
+        cube.addEventListener("click", () => {
+            cube.style.animation = "none";
+            cube.offsetHeight; /* Trigger a reflow to reset the animation */
+            cube.style.animation = "rotate 5s infinite linear";
+        });
+    </script>
+</body>
+
+</html>
