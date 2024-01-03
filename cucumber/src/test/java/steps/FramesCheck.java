@@ -25,7 +25,7 @@ package steps;
 			driver.switchTo().parentFrame();
 			driver.switchTo().parentFrame();
 			driver.findElement(By.xpath("//a[@href='WebTable.html']")).click();
-			driver.switchTo().alert().accept();
+			//driver.switchTo().alert().accept();
 			
 		}
 

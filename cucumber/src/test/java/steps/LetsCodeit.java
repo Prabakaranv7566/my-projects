@@ -1,6 +1,8 @@
 package steps;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -25,5 +27,8 @@ public class LetsCodeit {
 		driver.findElement(By.xpath("//a[text()='HOME']")).click();
 		
 	}
-
+	JavascriptExecutor js=(JavascriptExecutor)driver;
+	//js.executeScript("window.scrollBy(0,780);");
+	WebElement srch = driver.findElement(By.id("Air_and_space"));
+	js.executeScript("arguments[0].scrollIntoView(true);", srch);
 }
